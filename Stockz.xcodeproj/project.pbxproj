@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5FC74AEB2E078BB50037F60D /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5FC74AEA2E078BB50037F60D /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXContainerItemProxy section */
 		5FB3535B2E077F2200446C79 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -19,6 +23,7 @@
 /* Begin PBXFileReference section */
 		5FB3534D2E077F2100446C79 /* Stockz.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stockz.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5FB3535A2E077F2200446C79 /* StockzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = StockzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5FC74AEA2E078BB50037F60D /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -58,6 +63,7 @@
 				5FB3534F2E077F2100446C79 /* Stockz */,
 				5FB3535D2E077F2200446C79 /* StockzTests */,
 				5FB3534E2E077F2100446C79 /* Products */,
+				5FC74AEA2E078BB50037F60D /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -162,6 +168,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5FC74AEB2E078BB50037F60D /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
