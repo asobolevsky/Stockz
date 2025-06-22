@@ -30,16 +30,13 @@ Stockz/
 The app uses a **finite state machine** approach with clear state transitions:
 
 ```swift
-enum State: Equatable {
-    case idle           // Initial state
-    case loading        // Data fetching
-    case loaded([Stock]) // Success with data
-    case empty          // No data available
-    case failed(String) // Error state
+enum ViewModelState: Equatable {
+    case idle
+    case loading
+    case loaded(T)
+    case failed(String)
 }
 ```
-
-**Note**: The state could be extracted into a reusable shared `State` type, but encapsulating state within each view model provides a more granular approach at this stage. 
 
 
 #### 3. **Dependency Injection**
