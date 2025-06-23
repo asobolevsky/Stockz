@@ -4,7 +4,7 @@ protocol NetworkManaging {
     func data(for request: URLRequest) async throws -> (Data, URLResponse)
 }
 
-class NetworkManager: NetworkManaging {
+final class NetworkManager: NetworkManaging {
     private let session: URLSession
 
     init(session: URLSession = .shared) {

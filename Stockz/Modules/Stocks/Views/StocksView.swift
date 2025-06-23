@@ -1,13 +1,13 @@
 import SwiftUI
 
-struct PortfolioView: View {
-    @StateObject private var viewModel: PortfolioViewModel = .init()
+struct StocksView: View {
+    @StateObject private var viewModel: StocksViewModel = .init()
 
     var body: some View {
-        NavigationView {
+        NavigationStack {
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationTitle("My Portfolio")
+                .navigationTitle("Stocks")
         }
         .task {
             await viewModel.load()
@@ -24,18 +24,7 @@ struct PortfolioView: View {
                 await viewModel.load()
             }
         case .loaded(let stocks):
-            if stocks.isEmpty {
-                emptyContent
-            } else {
-                StockListView(stocks: stocks)
-            }
-        }
-    }
-    
-    @ViewBuilder
-    private var emptyContent: some View {
-        VStack(spacing: 12) {
-            Text("Your portfolio is empty.")
+            StocksListView(viewModel: .init(stocks: stocks))
         }
     }
 }

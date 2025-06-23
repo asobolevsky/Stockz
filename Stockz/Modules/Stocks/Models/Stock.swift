@@ -1,10 +1,6 @@
 import Foundation
 
-struct Portfolio: Decodable {
-    var stocks: [Stock]
-}
-
-struct Stock: Decodable, Identifiable, Equatable {
+struct Stock: Codable, Identifiable, Equatable {
     var id: String { ticker }
     let ticker: String
     let name: String
@@ -12,6 +8,7 @@ struct Stock: Decodable, Identifiable, Equatable {
     let currentPriceCents: Int
     let quantity: Int?
     let currentPriceTimestamp: Int
+    var priceDiff: Double = 0
 
     enum CodingKeys: String, CodingKey {
         case ticker, name, currency
@@ -21,17 +18,8 @@ struct Stock: Decodable, Identifiable, Equatable {
     }
 }
 
-// MARK: - Price formating
 extension Stock {
     var currentPrice: Double {
         Double(currentPriceCents) / 100.0
     }
-
-    var formattedPrice: String {
-        let formatter = NumberFormatter()
-        formatter.numberStyle = .currency
-        formatter.currencyCode = currency
-        return formatter.string(from: NSNumber(value: currentPrice)) ?? "-"
-    }
 }
-

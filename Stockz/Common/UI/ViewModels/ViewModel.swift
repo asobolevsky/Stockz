@@ -20,7 +20,7 @@ enum ViewModelState<T: Equatable, E: Error>: Equatable {
     }
 }
 
-protocol ViewModel: AnyObject {
+protocol LoadableViewModel: AnyObject {
     associatedtype T: Equatable
     associatedtype E: Error
     
@@ -29,7 +29,7 @@ protocol ViewModel: AnyObject {
     func load() async
 }
 
-extension ViewModel {
+extension LoadableViewModel {
     @MainActor
     func updateState(_ state: ViewModelState<T, E>) async {
         self.state = state

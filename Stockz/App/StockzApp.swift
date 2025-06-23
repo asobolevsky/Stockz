@@ -4,7 +4,7 @@ import SwiftUI
 struct StockzApp: App {
     var body: some Scene {
         WindowGroup {
-            PortfolioView()
+            MainView()
         }
     }
 }

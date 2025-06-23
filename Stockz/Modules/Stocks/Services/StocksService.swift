@@ -1,15 +1,15 @@
 import Foundation
 import Combine
 
-protocol StocksAPIProtocol {
-    func fetchPortfolio() async throws -> Portfolio
+protocol StocksProtocol {
+    func fetchStocks() async throws -> [Stock]
 }
 
-enum PortfolioServiceError: Error {
+enum StocksServiceError: Error {
     case invalidResponse
 }
 
-final class StocksApiService: StocksAPIProtocol {
+final class StocksService: StocksProtocol {
     private let networkManager: NetworkManaging
     private let endpoint: URL
     
@@ -21,11 +21,18 @@ final class StocksApiService: StocksAPIProtocol {
         self.endpoint = endpoint
     }
     
-    func fetchPortfolio() async throws -> Portfolio {
+    func fetchStocks() async throws -> [Stock] {
         let (data, response) = try await networkManager.data(for: URLRequest(url: endpoint))
         guard let http = response as? HTTPURLResponse, 200..<300 ~= http.statusCode else {
-            throw PortfolioServiceError.invalidResponse
+            throw StocksServiceError.invalidResponse
         }
-        return try JSONDecoder().decode(Portfolio.self, from: data)
+        let result = try JSONDecoder().decode(StocksListAPIResponse.self, from: data)
+        // Simulate price diff
+        let stocks = result.stocks.map { stock in
+            var stock = stock
+            stock.priceDiff = Double.random(in: -0.05...0.05)
+            return stock
+        }
+        return stocks
     }
 }
