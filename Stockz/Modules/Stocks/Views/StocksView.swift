@@ -1,13 +1,15 @@
 import SwiftUI
 
 struct StocksView: View {
+    @Environment(\.theme) private var theme
     @StateObject private var viewModel: StocksViewModel = .init()
 
     var body: some View {
         NavigationStack {
             content
                 .frame(maxWidth: .infinity, maxHeight: .infinity)
-                .navigationTitle("Stocks")
+                .navigationTitle("Market")
+                .background(theme.background)
         }
         .task {
             await viewModel.load()

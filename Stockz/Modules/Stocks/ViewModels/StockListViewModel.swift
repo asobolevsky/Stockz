@@ -20,7 +20,6 @@ final class StockListViewModel: ObservableObject {
         $searchText
             .debounce(for: .seconds(0.5), scheduler: DispatchQueue.main)
             .sink { [weak self] val in
-                print("filterStocks: \(val)")
                 self?.filterStocks()
             }
             .store(in: &cancellables)

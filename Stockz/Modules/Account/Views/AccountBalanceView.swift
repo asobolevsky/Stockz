@@ -3,6 +3,7 @@ import SwiftUI
 struct AccountBalanceView: View {
     @Environment(\.theme) private var theme
     let balance: Balance
+    let onAddFunds: () -> Void
     
     var body: some View {
         VStack {
@@ -11,7 +12,7 @@ struct AccountBalanceView: View {
                 .padding(.bottom, 4)
             Text(balance.formattedPrice)
                 .font(.system(size: 40, weight: .medium))
-            Button(action: {}) {
+            Button(action: onAddFunds) {
                 Text("Add Funds")
                     .font(.system(size: 16))
                     .foregroundColor(.white)

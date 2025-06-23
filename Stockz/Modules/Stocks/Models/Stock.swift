@@ -6,7 +6,7 @@ struct Stock: Codable, Identifiable, Equatable {
     let name: String
     let currency: String
     let currentPriceCents: Int
-    let quantity: Int?
+    var quantity: Int?
     let currentPriceTimestamp: Int
     var priceDiff: Double = 0
 
@@ -21,5 +21,14 @@ struct Stock: Codable, Identifiable, Equatable {
 extension Stock {
     var currentPrice: Double {
         Double(currentPriceCents) / 100.0
+    }
+    
+    var sharesQuantity: Int {
+        quantity ?? 0
+    }
+    
+    var formattedPrice: String {
+        NumberFormatter.priceFormatter(with: currency)
+            .string(from: NSNumber(value: currentPrice)) ?? "-"
     }
 }

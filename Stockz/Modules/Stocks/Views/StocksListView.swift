@@ -5,8 +5,10 @@ struct StocksListView: View {
     @StateObject var viewModel: StockListViewModel
     
     var body: some View {
-        List(viewModel.stocks) {
-            StocksRowView(viewModel: .init(stock: $0, theme: theme))
+        List(viewModel.stocks) { stock in
+            NavigationLink(destination: StockDetailView(stock: stock)) {
+                StocksRowView(viewModel: .init(stock: stock, theme: theme))
+            }
         }
         .overlay {
             emptyContent

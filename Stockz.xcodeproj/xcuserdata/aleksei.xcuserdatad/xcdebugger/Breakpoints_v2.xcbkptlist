@@ -3,4 +3,52 @@
    uuid = "3CE9FA2F-3232-4534-AB17-CCA3C5E95BBC"
    type = "1"
    version = "2.0">
+   <Breakpoints>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            uuid = "E4CDB61C-D30D-40E2-BEC5-EAE85F4DF90B"
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "Stockz/Modules/Account/Services/TransactionChecker.swift"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "15"
+            endingLineNumber = "15"
+            landmarkName = "checkTransaction(_:in:)"
+            landmarkType = "7">
+            <Locations>
+               <Location
+                  uuid = "E4CDB61C-D30D-40E2-BEC5-EAE85F4DF90B - 7ecc54fa90171779"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stockz.TransactionChecker.checkTransaction(_: Stockz.Transaction, in: Stockz.Portfolio) throws -&gt; ()"
+                  moduleName = "Stockz.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksei/Developer/ios/demos/Stockz/Stockz/Modules/Account/Services/TransactionChecker.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15">
+               </Location>
+               <Location
+                  uuid = "E4CDB61C-D30D-40E2-BEC5-EAE85F4DF90B - 7ecc54fa90171779"
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Stockz.TransactionChecker.checkTransaction(_: Stockz.Transaction, in: Stockz.Portfolio) throws -&gt; ()"
+                  moduleName = "Stockz.debug.dylib"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/aleksei/Developer/ios/demos/Stockz/Stockz/Modules/Account/Services/TransactionChecker.swift"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "15"
+                  endingLineNumber = "15">
+               </Location>
+            </Locations>
+         </BreakpointContent>
+      </BreakpointProxy>
+   </Breakpoints>
 </Bucket>

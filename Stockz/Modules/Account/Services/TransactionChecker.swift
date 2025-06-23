@@ -15,22 +15,20 @@ final class TransactionChecker: TransactionChecking {
         case let .buy(_, shares, price):
             let totalPrice = price * Double(shares)
             if portfolio.balance.amount < totalPrice { 
-                throw PortfolioError.insufficientBalance 
+                throw TransactionCheckerError.insufficientBalance
             }
 
         case let .withdrawal(amount):
             if portfolio.balance.amount < amount { 
-                throw PortfolioError.insufficientBalance 
+                throw TransactionCheckerError.insufficientBalance
             }
             
         case let .sell(ticker, shares, price):
-            guard let holding = portfolio.holdings.first(where: { $0.ticker == ticker }) else {
+            if
+                let holding = portfolio.holdings.first(where: { $0.ticker == ticker }),
+                holding.sharesQuantity < shares
+            {
                 throw TransactionCheckerError.insufficientShares
-            }
-
-            let totalPrice = price * Double(shares)
-            if portfolio.balance.amount < totalPrice {
-                throw TransactionCheckerError.insufficientBalance
             }
             
         default: break

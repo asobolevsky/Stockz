@@ -12,11 +12,7 @@ struct HoldingsRowViewModel {
     }
 
     var totalPrice: String {
-        let totalPrice = Double(stock.quantity ?? 0) * stock.currentPrice
+        let totalPrice = Double(stock.sharesQuantity) * stock.currentPrice
         return NumberFormatter.priceFormatter(with: stock.currency).string(from: NSNumber(value: totalPrice)) ?? ""
-    }
-
-    var quantity: String {
-        "\(stock.quantity ?? 0)"
     }
 }
