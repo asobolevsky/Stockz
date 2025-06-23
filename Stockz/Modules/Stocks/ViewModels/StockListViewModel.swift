@@ -25,7 +25,7 @@ final class StockListViewModel: ObservableObject {
             .store(in: &cancellables)
     }
 
-    private func filterStocks() {
+    func filterStocks() {
         if searchText.isEmpty {
             stocks = initialStocks
         } else {

@@ -2,17 +2,17 @@ import Combine
 import XCTest
 @testable import Stockz
 
-class PortfolioViewModelTests: XCTestCase {
+class StocksViewModelTests: XCTestCase {
     var networkManagerMock: NetworkManagerMock!
-    var service: StocksApiService!
-    var viewModel: PortfolioViewModel!
+    var service: StocksService!
+    var viewModel: StocksViewModel!
     var cancellables: Set<AnyCancellable> = []
 
     override func setUp() {
         super.setUp()
         networkManagerMock = NetworkManagerMock()
-        service = StocksApiService(networkManager: networkManagerMock)
-        viewModel = PortfolioViewModel(service: service)
+        service = StocksService(networkManager: networkManagerMock)
+        viewModel = StocksViewModel(service: service)
     }
     
     func testLoadPortfolio() async {

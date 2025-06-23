@@ -1,14 +1,14 @@
 import XCTest
 @testable import Stockz
 
-final class StocksAPIServiceTests: XCTestCase {
-    private var service: StocksApiService!
+final class StocksServiceTests: XCTestCase {
+    private var service: StocksService!
     private var networkManagerMock: NetworkManagerMock!
 
     override func setUp() {
         super.setUp()
         networkManagerMock = NetworkManagerMock()
-        service = StocksApiService(networkManager: networkManagerMock)
+        service = StocksService(networkManager: networkManagerMock)
     }
     
     func testFetchPortfolioHasOneStock() async throws {
@@ -30,8 +30,8 @@ final class StocksAPIServiceTests: XCTestCase {
             return (mockData, HTTPURLResponse.mock(url: request.url!))
         }
 
-        let portfolio = try await service.fetchPortfolio()
-        XCTAssertEqual(portfolio.stocks.count, 1)
+        let stocks = try await service.fetchStocks()
+        XCTAssertEqual(stocks.count, 1)
     }
 
     func testFetchPortfolioEmpty() async throws {
@@ -44,8 +44,8 @@ final class StocksAPIServiceTests: XCTestCase {
             return (mockData, HTTPURLResponse.mock(url: request.url!))
         }
 
-        let portfolio = try await service.fetchPortfolio()
-        XCTAssertEqual(portfolio.stocks.count, 0)
+        let stocks = try await service.fetchStocks()
+        XCTAssertEqual(stocks.count, 0)
     }
 
     func testFetchPortfolioInvalidResponse() async throws {
@@ -54,7 +54,7 @@ final class StocksAPIServiceTests: XCTestCase {
         }
 
         do {
-            _ = try await service.fetchPortfolio()
+            _ = try await service.fetchStocks()
         } catch {
             XCTAssertEqual(error as? ErrorMock, .invalidResponse)
         }
@@ -66,9 +66,9 @@ final class StocksAPIServiceTests: XCTestCase {
         }
 
         do {
-            _ = try await service.fetchPortfolio()
+            _ = try await service.fetchStocks()
         } catch {
-            XCTAssertEqual(error as? PortfolioServiceError, PortfolioServiceError.invalidResponse)
+            XCTAssertEqual(error as? StocksServiceError, StocksServiceError.invalidResponse)
         }
     }
 }
